@@ -12,7 +12,8 @@ namespace kordamineoop3
         string koolinimi;
         string klaas;
         string spetsialiseerumine;
-        public Opilane(string nimi, int synniAasta, sugus sugu, string koolinimi = "---", string klaas = "---", string spetsialiseerumine = "---") : base(nimi, synniAasta, sugu)
+        public Opilane() { }
+        public Opilane(string nimi,int synniAasta, sugus sugu, string koolinimi="---", string klaas="---", string spetsialiseerumine = "---", double kaal = 0, double pikkus = 0) :base(nimi,synniAasta, sugu, kaal, pikkus)
         {
             this.koolinimi = koolinimi;
             this.klaas = klaas;
@@ -20,12 +21,13 @@ namespace kordamineoop3
         }
         public override void print_Info()
         {
-            Console.WriteLine("Nimi: {0}", nimi);
+            Console.WriteLine("Nimi: {0}",nimi);
             Console.WriteLine("Koolinimi: {0}", koolinimi);
             Console.WriteLine("Klaas: {0}", klaas);
-            Console.WriteLine("Spetsialiseerumine: {0}", spetsialiseerumine);
+            Console.WriteLine("Spetsialiseerumine: {0}",spetsialiseerumine);
             Console.WriteLine($"Vanus: {arvutaVanus()}");
             Console.WriteLine("Sugu: {0}", sugu);
+            Console.WriteLine($"Kehamassiindeks:{KMI()}");
         }
     }
 }
