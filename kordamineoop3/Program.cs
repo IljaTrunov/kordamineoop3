@@ -27,18 +27,26 @@ people.Add(tootaja);
 people.Add(tootaja2);
 people.Add(tootaja3);
 people.Add(opilane);
-StreamWriter to_file = new StreamWriter(@"...\...\people.txt", false);
-foreach (isik p in people)
-{
-    p.print_Info();
-    to_file.WriteLine(p.nimi + "," + p.sugu + ";");
-
+StreamWriter viilima = new StreamWriter(@"..\..\..\people.txt", false);
+foreach (isik p in inimesed)
+            {
+                p.print_Info();
+                viilima.WriteLine(p.nimi + ", " + p.arvutaVanus() + ", " + p.sugu + ";");
+            }
+            viilima.Close();
+            List<isik> LoetudFailist = new List<isik>();
+            StreamReader sr = new StreamReader(@"..\..\..\people.txt");
+            List<string> lines=new List<string>();
+            int n= sr.ReadToEnd().Split(new char[] { '\n'}).Length;
+            Console.WriteLine("-----"+n+"-------");
+            StreamReader failist = new StreamReader(@"..\..\..\people.txt");
+            string tekst = failist.ReadToEnd();
+            Console.WriteLine(tekst);
+            Console.ReadKey();
+        }
+    }
 }
-to_file.Close();
-StreamReader from_file = new StreamReader(@"...\...\people.txt");
-string text = from_file.ReadToEnd();
-Console.WriteLine(text);
-from_file.Close();
+
 
 
 
